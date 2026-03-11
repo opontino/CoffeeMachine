@@ -22,14 +22,14 @@ public class CoffeeMachineServiceTests
     {
         var service = new CoffeeMachineService();
 
-        BrewResult result = null;
+        BrewResult? result = null;
 
         for (int i = 0; i < 5; i++)
         {
             result = service.BrewCoffee();
         }
 
-        result.StatusCode.Should().Be(503);
+        result?.StatusCode.Should().Be(503);
     }
 
     [Fact]

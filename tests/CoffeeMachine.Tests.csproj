@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../src/coffee-web-api/coffee-web-api.csproj" />
+    <ProjectReference Include="..\src\coffee-web-api\CoffeeMachin.Api.csproj" />
   </ItemGroup>
 
 </Project>
