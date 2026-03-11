@@ -1,0 +1,10 @@
+<Solution>
+    <Project>
+        <Name>coffee-web-api</Name>
+        <Path>src/coffee-web-api/coffee-web-api.csproj</Path>
+    </Project>
+    <Project>
+        <Name>CoffeeMachineTests</Name>
+        <Path>tests/CoffeeMachineTests.csproj</Path>
+    </Project>
+</Solution>

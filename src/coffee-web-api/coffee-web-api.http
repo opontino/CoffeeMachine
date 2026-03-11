@@ -1,0 +1,6 @@
+@coffee_web_api_HostAddress = http://localhost:5134
+
+GET {{coffee_web_api_HostAddress}}/brew-coffee
+Accept: application/json
+
+###
