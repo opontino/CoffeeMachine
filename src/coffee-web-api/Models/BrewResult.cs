@@ -5,14 +5,14 @@ public class BrewResult
     public int StatusCode { get; init; }
     public object? Body { get; init; }
 
-    public static BrewResult Success()
+    public static BrewResult Success(string message)
     {
         return new BrewResult
         {
-            StatusCode = StatusCodes.Status200OK,
+            StatusCode = 200,
             Body = new
             {
-                message = "Your piping hot coffee is ready",
+                message,
                 prepared = DateTimeOffset.Now.ToString("o")
             }
         };
@@ -34,3 +34,4 @@ public class BrewResult
         };
     }
 }
+

@@ -3,12 +3,25 @@ using CoffeeWebApi.Models;
 
 public class CoffeeMachineService : ICoffeeMachineService
 {
-    private int _counter = 0;
-    private readonly Lock _lock = new();
+    private readonly IWeatherService _weatherService;
+    private readonly ITimeProvider _timeProvider;
+    private readonly object _lock = new object();
 
-    public BrewResult BrewCoffee()
+    private int _counter = 0;
+
+    public CoffeeMachineService(
+        IWeatherService weatherService,
+        ITimeProvider timeProvider)
     {
-        if (DateTime.UtcNow.Month == 4 && DateTime.UtcNow.Day == 1)
+        _weatherService = weatherService;
+        _timeProvider = timeProvider;
+    }
+
+    public async Task<BrewResult> BrewCoffeeAsync()
+    {
+        var now = _timeProvider.UtcNow;
+
+        if (now.Month == 4 && now.Day == 1)
         {
             return BrewResult.Teapot();
         }
@@ -16,13 +29,20 @@ public class CoffeeMachineService : ICoffeeMachineService
         lock (_lock)
         {
             _counter++;
-
-            if (_counter % 5 == 0)
-            {
-                return BrewResult.OutOfCoffee();
-            }
+        }
+           
+        if (_counter % 5 == 0)
+        {
+            return BrewResult.OutOfCoffee();
         }
 
-        return BrewResult.Success();
+        var temp = await _weatherService.GetCurrentTemperatureAsync();
+
+        var message =
+            temp > 30
+            ? "Your refreshing iced coffee is ready"
+            : "Your piping hot coffee is ready";
+
+        return BrewResult.Success(message);
     }
 }

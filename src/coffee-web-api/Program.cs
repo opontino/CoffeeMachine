@@ -5,7 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
+builder.Services.AddSingleton<ITimeProvider, SystemTimeProvider>();
+
 builder.Services.AddSingleton<ICoffeeMachineService, CoffeeMachineService>();
+
+builder.Services.AddHttpClient<IWeatherService, OpenWeatherService>();
 
 var app = builder.Build();
 
