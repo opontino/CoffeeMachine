@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="src/coffee-web-api/CoffeeMachin.Api.csproj" />
   <Project Path="tests/CoffeeMachine.Tests.csproj" />
 </Solution>

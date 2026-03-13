@@ -3,7 +3,6 @@ namespace tests;
 using CoffeeWebApi.Models;
 using CoffeeWebApi.Services;
 using FluentAssertions;
-using Microsoft.Extensions.Caching.Memory;
 using Moq;
 
 public class CoffeeMachineServiceTests
